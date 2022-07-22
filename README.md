@@ -55,7 +55,7 @@ If you're not familiar with building container images, the `cloudshell` CLI wrap
 ```
 cloudshell env create-custom-image your-cloudshell-repo
 
-cd $HOME/your-cloudshell-repo
+cd $HOME/your-cloudshell-repo && rm Dockerfile
 
 cat << EOF >> Dockerfile
 FROM gcr.io/cloudshell-images/cloudshell:latest
