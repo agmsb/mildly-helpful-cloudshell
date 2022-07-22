@@ -107,7 +107,7 @@ you can use tmux for this too. or a dash of `screen` will do it - which for some
 
 ## Need to demo mostly code or config?
 
-`Cloud Shell` comes with the open source editor [Theia](ide.cloud.google.com) installed! Go ahead, click!
+`Cloud Shell` comes with the open source editor [Theia](https://ide.cloud.google.com) installed! Go ahead, click!
 
 Fanciest things include:
 - Nice version control support (bye `git`)
