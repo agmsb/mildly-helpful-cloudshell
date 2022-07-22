@@ -65,7 +65,7 @@ then `ctrl + c` to kill (anything really)
 
 ### need to generate traffic for a dashboard (IE i don't care about seeing the response, just need me some metrics)?
 
-you can use tmux for this too. or a dash of `screen` will do it. (here)[https://linuxize.com/post/how-to-use-linux-screen/]. though - for this you're better off just using a GCE VM.
+you can use tmux for this too. or a dash of `screen` will do it. [here](https://linuxize.com/post/how-to-use-linux-screen/). though - for this you're better off just using a GCE VM.
 
 ## Weird gcloud tips
 
