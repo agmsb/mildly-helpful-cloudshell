@@ -64,6 +64,12 @@ wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.
 ```
 Or installing your own version of `gcloud`!
 
+You can also change your PS1 by editing your `~/.bashrc`, for example I add `kube-ps1.sh1` to change my prompt to give me my current k8s context.
+```
+source ~/kube-ps1.sh
+PS1='[\u@\h \W $(kube_ps1)]\$ '
+```
+
 ## You could also just build your own container image to run in Cloud Shell
 
 If you're not familiar with building container images, the `cloudshell` CLI wraps the process of building the container image nicely:
