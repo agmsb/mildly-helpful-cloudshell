@@ -1,21 +1,24 @@
 # mildly-helpful-cloudshell
 
-Meh, mildly helpful info about Cloud Shell and also just some Linux stuff i wish people taught me earlier
+Meh, mildly helpful info about `Cloud Shell` and also just some Linux stuff i wish people taught me earlier
 
 ## Helpful tools I use that are already there - it's free real estate baby!
 ```
+My favorites:
 - gcloud - you already know
 - kubectl - interact with kubernetes
 - kubectx - switch between kubernetes cluster contexts automatically
 - kubens - switch between kubernetes namespaces in your current kubernetes cluster
-- bq - query big
-- gs - storage stuff
 - terraform - create (or destroy - or dry run, whatever floats your boat) cloud resources
 - helm  - deploy templatized k8s apps
 - hey - fancy traffic generator
 - curl - kirkland brand way to issue http requests - gets the job done
 - docker - build containers
 - skaffold - automate building and deploying k8s for dev
+
+Other cool ones I guess:
+- bq - query big
+- gs - storage stuff
 - git - manage your git repos
 - gh - manage your GitHub repos
 - vi (lol jk) - lol
@@ -24,29 +27,63 @@ Meh, mildly helpful info about Cloud Shell and also just some Linux stuff i wish
 - jq - query json documents
 ```
 
-## Customizing Cloud Shell on startup (the fastest way to customize IMO)
+## Customizing `Cloud Shell` on startup (the fastest way to customize IMO)
 ```
+# This runs as root lol so be careful i guess
 vi ~/.customize_environment
 ```
 Now insert whatever trouble you want to wreak, like...
 ```
-# cat but fancy syntax highlighting
+# bat - cat but fancy syntax highlighting
 yes | apt install bat
 
-# fancy display of your directory hierarchy
+# tree - fancy display of your directory hierarchy
 yes | apt install tree
 
-# jq but for yaml
-yes | apt install yq
+# yq - i hope you never have to query yaml but here ya go
+VERSION=v4.2.0
+BINARY=yq_linux_amd64
+wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
+  tar xz && mv ${BINARY} /usr/bin/yq
 ```
-Or installing your own version of gcloud!
+Or installing your own version of `gcloud`!
 
+## You could also just build your own container image to run in Cloud Shell
 
-## Tmux - it's not flying, it's falling with style
+If you're not familiar with building container images, the `cloudshell` CLI wraps the process of building the container image nicely:
+
 ```
-$ tmux
+cloudshell env create-custom-image your-cloudshell-repo
+
+cd $HOME/your-cloudshell-repo
+
+cat << EOF >> Dockerfile
+FROM gcr.io/cloudshell-images/cloudshell:latest
+# Install all the stuff in the example above
+# bat - cat but fancy syntax highlighting
+yes | apt install bat
+# tree - fancy display of your directory hierarchy
+yes | apt install tree
+# yq - i hope you never have to query yaml but here ya go
+VERSION=v4.2.0
+BINARY=yq_linux_amd64
+wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
+  tar xz && mv ${BINARY} /usr/bin/yq
+EOF
+
+cloudshell env build-local
+
+git commit -a -m "Initial custom environment check-in."
+
+git push origin master
+
+cloudshell env push
 ```
-Then _press ctrl + b before these:_
+
+## Demoing multiple things using `Tmux` - it's not flying, it's falling with style
+Tmux is a fancy terminal multiplexer thingy; i use tmux to show multiple things going on at once.
+
+To use `tmux` for this you can access its key bindings by _pressing ctrl + b before these keys:_
 
 * drop a panel below: "
 * drop a panel to the side: %
@@ -65,7 +102,7 @@ then `ctrl + c` to kill (anything really)
 
 ### need to generate traffic for a dashboard (IE i don't care about seeing the response, just need me some metrics)?
 
-you can use tmux for this too. or a dash of `screen` will do it. [here](https://linuxize.com/post/how-to-use-linux-screen/). though - for this you're better off just using a GCE VM.
+you can use tmux for this too. or a dash of `screen` will do it - which for some reason i find more intuitive. [here](https://linuxize.com/post/how-to-use-linux-screen/). though - for this you're better off just using a GCE VM.
 
 ## Weird gcloud tips
 
@@ -77,6 +114,21 @@ gcloud projects describe $PROJECT_ID --format=flattened | awk 'FNR == 7 {print $
 Grab latest cluster version in GKE (and see how you can use `value` as an output format)
 ```
 gcloud beta container get-server-config --region us-central1 --format='value(validMasterVersions[0])'
+```
+
+## Save some space!
+
+`Cloud Shell` only comes with 5 GB for your $HOME. Lol. So clean up every once in awhile!
+
+You could clean up `docker` images using:
+```
+docker system prune
+docker image prune
+```
+
+Hopefully you don't ever have to demo `bazel` but I had to once and borked my `Cloud Shell` once using it, clear your `bazel` cache:
+```
+bazel clean
 ```
 
 ## General Linux tips (general linux)
@@ -121,4 +173,10 @@ $ create a file with stuff
 cat << EOF >> /path/to/filename
 here is fancy file stuff
 EOF
+
+$ delete a file
+rm FILENAME
+
+$ delete a directory (BE CAREFUL)
+rm -rf DIR
 ```
