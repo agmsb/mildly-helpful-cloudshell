@@ -198,6 +198,6 @@ env
 ```
 ## More random Cloud Shell things:
 
-- Boost mode to get an `e2-medium` machine
+- Boost mode to get an `e2-medium` machine.
 - You can run `Cloud Shell` in `ephemeral mode` to get a factory fresh instance every time.
 - You can restart your instance to get a clean state.
