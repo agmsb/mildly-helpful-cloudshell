@@ -3,7 +3,7 @@
 Meh, mildly helpful info about `Cloud Shell` and also just some Linux stuff i wish people taught me earlier
 
 ## Table of contents
-* Tools already in Cloud Shell
+* [Tools already in Cloud Shell](#Helpful tools I use that are already there - it's free real estate baby!)
 * Customizing Cloud Shell
   * Using `customize_environment`
   * Using a custom container image
