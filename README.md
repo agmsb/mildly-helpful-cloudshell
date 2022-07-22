@@ -94,8 +94,8 @@ git push origin master
 cloudshell env push
 ```
 
-## Demoing multiple things using `Tmux` - it's not flying, it's falling with style
-Tmux is a fancy terminal multiplexer thingy; i use tmux to show multiple things going on at once.
+## Demoing multiple things using `tmux` - it's not flying, it's falling with style
+`tmux` is a fancy terminal multiplexer thingy; i use tmux to show multiple things going on in different windows at once.
 
 To use `tmux` for this you can access its key bindings by _pressing ctrl + b before these keys:_
 
@@ -156,6 +156,17 @@ gcloud projects describe $PROJECT_ID --format=flattened | awk 'FNR == 7 {print $
 Grab latest cluster version in GKE (and see how you can use `value` as an output format)
 ```
 gcloud beta container get-server-config --region us-central1 --format='value(validMasterVersions[0])'
+```
+
+Create a cluster (or anything really) `async`
+```
+gcloud container clusters create $CLUSTER_NAME \
+    --cluster-version=$GKE_VERSION \
+    --zone $ZONE \
+    --machine-type=e2-standard-2 \
+    --num-nodes=1 \
+    --no-enable-shielded-nodes \
+    --async
 ```
 
 ## General Linux tips (general linux)
