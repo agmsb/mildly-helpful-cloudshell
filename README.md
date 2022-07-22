@@ -130,7 +130,7 @@ gcloud beta container get-server-config --region us-central1 --format='value(val
 
 ## Save some space!
 
-`Cloud Shell` only comes with 5 GB for your $HOME. Lol. So clean up every once in awhile!
+`Cloud Shell` only comes with 5 GB for your `$HOME`. Lol. So clean up every once in awhile!
 
 You could clean up `docker` images using:
 ```
