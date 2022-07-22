@@ -104,6 +104,18 @@ then `ctrl + c` to kill (anything really)
 
 you can use tmux for this too. or a dash of `screen` will do it - which for some reason i find more intuitive. [here](https://linuxize.com/post/how-to-use-linux-screen/). though - for this you're better off just using a GCE VM.
 
+## Need to demo mostly code or config?
+
+`Cloud Shell` comes with the open source editor [Theia](ide.cloud.google.com) installed! Go ahead, click!
+
+Fanciest things include:
+- Nice version control support (bye `git`)
+- Cloning sample repositories by example 
+- Cloud Code - it does so much lol
+- Cloud Code for GKE - see all clusters in your `kubeconfig`, and all resources in those clusters (that you have permission to see ofc)
+- Cloud Code for Cloud Run - see your services
+- Cloud Code for minikube - create a baby k8s cluster! awww
+
 ## Weird gcloud tips
 
 Grab a project number (and see how you can use `flattened` as an output format and pipe to `awk`)
@@ -180,3 +192,7 @@ rm FILENAME
 $ delete a directory (BE CAREFUL)
 rm -rf DIR
 ```
+## More random Cloud Shell things:
+
+- Boost mode to get an `e2-medium` machine
+- You can run `Cloud Shell` fresha and clean in `ephemeral mode`.
