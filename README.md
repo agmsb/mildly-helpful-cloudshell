@@ -23,7 +23,6 @@ Other cool ones I guess:
 - gh - manage your GitHub repos
 - vi (lol jk) - lol
 - tmux - multiplex terminal (run stuff in background, display multiple terminals)
-- screen - run stuff in background
 - jq - query json documents
 ```
 
@@ -39,6 +38,10 @@ yes | apt install bat
 
 # tree - fancy display of your directory hierarchy
 yes | apt install tree
+
+# screen - run stuff in the background (i find easier than tmux)
+
+yes | apt install screen
 
 # yq - i hope you never have to query yaml but here ya go
 VERSION=v4.2.0
@@ -60,11 +63,9 @@ cd $HOME/your-cloudshell-repo && rm Dockerfile
 cat << EOF >> Dockerfile
 FROM gcr.io/cloudshell-images/cloudshell:latest
 # Install all the stuff in the example above
-# bat - cat but fancy syntax highlighting
 yes | apt install bat
-# tree - fancy display of your directory hierarchy
 yes | apt install tree
-# yq - i hope you never have to query yaml but here ya go
+yes | apt install screen
 VERSION=v4.2.0
 BINARY=yq_linux_amd64
 wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
