@@ -2,6 +2,19 @@
 
 Meh, mildly helpful info about `Cloud Shell` and also just some Linux stuff i wish people taught me earlier
 
+## Table of contents
+* Tools already in Cloud Shell
+* Customizing Cloud Shell
+  * Using `customize_environment`
+  * Using a custom container image
+* Using `tmux`
+* Simulating traffic
+* Using [ide.cloud.google.com](https://ide.cloud.google.com)
+* Space saving
+* Other `gcloud` tips
+* Other `linux` tips
+* Other Cloud Shell tips
+
 ## Helpful tools I use that are already there - it's free real estate baby!
 ```
 My favorites:
@@ -117,17 +130,6 @@ Fanciest things include:
 - Cloud Code for Cloud Run - see your services
 - Cloud Code for minikube - create a baby k8s cluster! awww
 
-## Weird gcloud tips
-
-Grab a project number (and see how you can use `flattened` as an output format and pipe to `awk`)
-```
-gcloud projects describe $PROJECT_ID --format=flattened | awk 'FNR == 7 {print $2}'
-```
-
-Grab latest cluster version in GKE (and see how you can use `value` as an output format)
-```
-gcloud beta container get-server-config --region us-central1 --format='value(validMasterVersions[0])'
-```
 
 ## Save some space!
 
@@ -142,6 +144,18 @@ docker image prune
 Hopefully you don't ever have to demo `bazel` but I had to once and borked my `Cloud Shell` once using it, clear your `bazel` cache:
 ```
 bazel clean
+```
+
+## Weird gcloud tips
+
+Grab a project number (and see how you can use `flattened` as an output format and pipe to `awk`)
+```
+gcloud projects describe $PROJECT_ID --format=flattened | awk 'FNR == 7 {print $2}'
+```
+
+Grab latest cluster version in GKE (and see how you can use `value` as an output format)
+```
+gcloud beta container get-server-config --region us-central1 --format='value(validMasterVersions[0])'
 ```
 
 ## General Linux tips (general linux)
