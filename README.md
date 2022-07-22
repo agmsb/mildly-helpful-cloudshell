@@ -180,19 +180,24 @@ cat
 # create an empty file
 touch $FILENAME
 
-$ create a file with stuff
+# create a file with stuff
 
 cat << EOF >> /path/to/filename
 here is fancy file stuff
 EOF
 
-$ delete a file
+# delete a file
 rm FILENAME
 
-$ delete a directory (BE CAREFUL)
+# delete a directory (BE CAREFUL)
 rm -rf DIR
+
+# see all your env vars - wow CLOUD SHELL has some defaults!
+env
+
 ```
 ## More random Cloud Shell things:
 
 - Boost mode to get an `e2-medium` machine
-- You can run `Cloud Shell` fresha and clean in `ephemeral mode`.
+- You can run `Cloud Shell` in `ephemeral mode` to get a factory fresh instance every time.
+- You can restart your instance to get a clean state.
