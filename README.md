@@ -35,7 +35,7 @@ Other cool ones I guess:
 - git - manage your git repos
 - gh - manage your GitHub repos
 - vi (lol jk) - lol
-- tmux - multiplex terminal (run stuff in background, display multiple terminals)
+- tmux - i use it to display multiple terminals
 - jq - query json documents
 ```
 
